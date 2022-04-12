@@ -1,22 +1,22 @@
-package br.com.yann.calculator;
+package br.dev.yann.scientificcalc;
 
 import java.util.List;
 import java.util.Scanner;
 
-import br.com.yann.calculator.operations.Division;
-import br.com.yann.calculator.operations.Modulo;
-import br.com.yann.calculator.operations.Multiplication;
-import br.com.yann.calculator.operations.Power;
-import br.com.yann.calculator.operations.Subtraction;
-import br.com.yann.calculator.operations.Sum;
-import br.com.yann.calculator.operations.interfaces.Command;
+import br.dev.yann.scientificcalc.operations.Operation;
+import br.dev.yann.scientificcalc.operations.impl.Division;
+import br.dev.yann.scientificcalc.operations.impl.Modulo;
+import br.dev.yann.scientificcalc.operations.impl.Multiplication;
+import br.dev.yann.scientificcalc.operations.impl.Power;
+import br.dev.yann.scientificcalc.operations.impl.Subtraction;
+import br.dev.yann.scientificcalc.operations.impl.Sum;
 
 
 
 public class ScientificCalculator{
 
-  private List<Command> operations;
- 
+  private List<Operation> operations;
+
   public ScientificCalculator() {
     this.operations = List.of(
                               new Sum(),
@@ -28,13 +28,13 @@ public class ScientificCalculator{
                             );
   }
 
-    
-  void iniciar (){
-    
+
+  void start (){
+
     System.out.println("----Scientific Calculator----");
-    
+
     int counter = 1;
-    for (Command operation : operations) {
+    for (Operation operation : operations) {
 
       int latsOcorrencyOfPointInFQN = operation.getClass().getName().lastIndexOf(".");
       String className = operation.getClass().getName().substring(latsOcorrencyOfPointInFQN+1);
@@ -54,7 +54,7 @@ public class ScientificCalculator{
       System.out.print("Inform the 2nd number: ");
       double num2 = scanner.nextDouble();
 
-      double result = operations.get(operationIndex).execute(num1, num2);
+      double result = operations.get(operationIndex).calculate(num1, num2);
 
       System.out.println("The result of the operation is "+result);
     }
