@@ -36,8 +36,8 @@ public class ScientificCalculator{
     int counter = 1;
     for (Operation operation : operations) {
 
-      int latsOcorrencyOfPointInFQN = operation.getClass().getName().lastIndexOf(".");
-      String className = operation.getClass().getName().substring(latsOcorrencyOfPointInFQN+1);
+      int pointLastOcorrencyInFQN = operation.getClass().getName().lastIndexOf(".");
+      String className = operation.getClass().getName().substring(pointLastOcorrencyInFQN+1);
 
       System.out.println(counter +" - "+ className);
       counter++;
